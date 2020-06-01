@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="norte">North</string>
+    <string name="nordeste">Northwest</string>
+    <string name="este">East</string>
+    <string name="sureste">Southeast</string>
+    <string name="sur">South</string>
+    <string name="suroeste">Southwest</string>
+    <string name="oeste">West</string>
+    <string name="noroeste">Northwest</string>
+    <string name="grados">Degrees</string>
+    <string name="altitud">Altitude: </string>
+    <string name="longitud">Length: </string>
+    <string name="latitud">Latitude: </string>
+    <string name="linternaOn">Light On</string>
+    <string name="linternaOff">Light Off</string>
+
+</resources>

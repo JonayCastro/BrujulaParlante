@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="norte">Norden</string>
+    <string name="nordeste">Nordosten</string>
+    <string name="este">Dies</string>
+    <string name="sureste">Südosten</string>
+    <string name="sur">Süd</string>
+    <string name="suroeste">Südwesten</string>
+    <string name="oeste">Westen</string>
+    <string name="noroeste">Nordwesten</string>
+    <string name="grados">Grad</string>
+    <string name="altitud">Höhe: </string>
+    <string name="longitud">Länge: </string>
+    <string name="latitud">Latitude: </string>
+    <string name="linternaOn">Licht On</string>
+    <string name="linternaOff">Licht Off</string>
+</resources>

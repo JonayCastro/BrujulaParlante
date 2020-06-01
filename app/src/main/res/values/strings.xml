@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">Brújula parlante</string>
+    <string name="norte">Norte</string>
+    <string name="nordeste">Noreste</string>
+    <string name="este">Este</string>
+    <string name="sureste">Sureste</string>
+    <string name="sur">Sur</string>
+    <string name="suroeste">Suroeste</string>
+    <string name="oeste">Oeste</string>
+    <string name="noroeste">Noroeste</string>
+    <string name="grados">Grados</string>
+    <string name="altitud">Altitud: </string>
+    <string name="longitud">Longitud: </string>
+    <string name="latitud">Latitud: </string>
+    <string name="linternaOn">Luz On</string>
+    <string name="linternaOff">Luz Off</string>
+</resources>
