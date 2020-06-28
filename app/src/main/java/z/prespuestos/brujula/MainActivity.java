@@ -1,6 +1,5 @@
 package z.prespuestos.brujula;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -8,10 +7,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
-import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -23,11 +23,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
-@TargetApi(23)
 
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class MainActivity extends FragmentActivity implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, SensorEventListener{
 
     private ImageView brujulaImg;
@@ -169,6 +170,16 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
 
         if(fromDegrees != toDegrees){
             brujulaImg.animate().rotation(0.015f*360-mTargetDirection).setDuration(0);
+
+            /*RotateAnimation aRotate = new RotateAnimation(fromDegrees, fromDegrees+0.015f*360-mTargetDirection,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+            aRotate.setStartOffset(0);
+            aRotate.setDuration(2000);
+            aRotate.setFillAfter(true);
+            aRotate.setInterpolator(this, android.R.anim.decelerate_interpolator);
+
+            brujulaImg.startAnimation(aRotate);*/
         }
 
     }
@@ -217,7 +228,7 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
         return c;
     }
 
-    public void habla(){
+    public void habla(final String msg){
 
         speech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -225,12 +236,18 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
                 if(i != TextToSpeech.ERROR){
                     cardinal = getCardinals(mTargetDirection)[0];
                     speech.setLanguage(Locale.getDefault());
-                    speech.speak((mTargetDirection)+getString(R.string.grados)+","+cardinal, TextToSpeech.QUEUE_FLUSH, null);
+                    if(msg.equals("")){
+                        speech.speak((mTargetDirection)+getString(R.string.grados)+","+cardinal, TextToSpeech.QUEUE_FLUSH, null);
+                    }else{
+                        speech.speak(msg, TextToSpeech.QUEUE_FLUSH, null);
+                    }
+
                 }
             }
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void flash(View v){
 
         try {
@@ -238,12 +255,14 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
                 managerCamara.setTorchMode(idCamara, true);
                 boton.setText(getString(R.string.linternaOff));
                 encendida = true;
+                habla(getString(R.string.flashOn));
 
             }
             else {
                 managerCamara.setTorchMode(idCamara, false);
                 boton.setText(getString(R.string.linternaOn));
                 encendida = false;
+                habla(getString(R.string.flashOff));
             }
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -294,7 +313,7 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
         Runnable Hilo = new Runnable() {
             @Override
             public void run() {
-                habla();
+                habla("");
             }
         };
 
@@ -312,6 +331,29 @@ public class MainActivity extends FragmentActivity implements GestureDetector.On
      */
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
+        String nivel = new String();
+        String msg = new String();
+
+        if(sensor == brujula){
+            switch(i){
+                case SensorManager.SENSOR_STATUS_ACCURACY_LOW:
+                    nivel = "Baja";
+                    msg = getString(R.string.precision_baja);
+                    break;
+
+                case SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM:
+                    nivel = "Media";
+                    msg = getString(R.string.precision_media);
+                    break;
+                case SensorManager.SENSOR_STATUS_ACCURACY_HIGH:
+                    nivel = "Alta";
+                    msg = getString(R.string.precision_alta);
+                    break;
+
+            }
+            Toast.makeText(getApplicationContext(), "La precisión de la Brujula es "+nivel, Toast.LENGTH_LONG).show();
+            habla(msg);
+        }
 
     }
 

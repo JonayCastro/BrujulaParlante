@@ -14,4 +14,10 @@
     <string name="latitud">Latitude: </string>
     <string name="linternaOn">Lumière On</string>
     <string name="linternaOff">Lumière Off</string>
+    <string name="flashOn">Flash activé</string>
+    <string name="flashOff">Flash désactivé</string>
+
+    <string name="precision_baja">La précision de la boussole est faible</string>
+    <string name="precision_media">La précision de la boussole est moyenne</string>
+    <string name="precision_alta">La précision de la boussole est élevée</string>
 </resources>

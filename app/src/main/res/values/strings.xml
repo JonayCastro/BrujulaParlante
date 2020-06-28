@@ -14,4 +14,10 @@
     <string name="latitud">Latitud: </string>
     <string name="linternaOn">Luz On</string>
     <string name="linternaOff">Luz Off</string>
+    <string name="flashOn">Flash Encendido</string>
+    <string name="flashOff">Flash Apagado</string>
+
+    <string name="precision_baja">La precisión de la Brújula es Baja</string>
+    <string name="precision_media">La precisión de la Brújula es Media</string>
+    <string name="precision_alta">La precisión de la Brújula es Alta</string>
 </resources>

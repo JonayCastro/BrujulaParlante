@@ -14,5 +14,11 @@
     <string name="latitud">Latitude: </string>
     <string name="linternaOn">Light On</string>
     <string name="linternaOff">Light Off</string>
+    <string name="flashOn">Flash On</string>
+    <string name="flashOff">Flash Off</string>
+
+    <string name="precision_baja">Compass Accuracy is Low</string>
+    <string name="precision_media">Compass Accuracy is Medium</string>
+    <string name="precision_alta">Compass Accuracy is High</string>
 
 </resources>

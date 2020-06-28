@@ -14,4 +14,10 @@
     <string name="latitud">Latitude: </string>
     <string name="linternaOn">Licht On</string>
     <string name="linternaOff">Licht Off</string>
+    <string name="flashOn">Blitz an</string>
+    <string name="flashOff">Blitz aus</string>
+
+    <string name="precision_baja">Die Kompassgenauigkeit ist gering</string>
+    <string name="precision_media">Die Kompassgenauigkeit ist mittel</string>
+    <string name="precision_alta">Die Kompassgenauigkeit ist hoch</string>
 </resources>
